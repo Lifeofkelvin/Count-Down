@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
+
+:root {
+    --Grayish-blue: hsl(237, 18%, 59%);
+    --Soft-red: hsl(345, 95%, 68%);
+
+    --White: hsl(0, 0%, 100%);
+    --Dark-desaturated-blue: hsl(236, 21%, 26%);
+    --Very-dark-blue: hsl(235, 16%, 14%);
+    --Very-dark-black-blue: hsl(234, 17%, 12%);
+}
+
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Red Hat Text", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--Very-dark-black-blue);
+    background-image: url(/images/bg-stars.svg);
+    background-repeat: no-repeat;
+    color: var(--White);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.header h1{
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-align: center;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.days,
+.hours,
+.minutes,
+.seconds {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.number {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 120px;
+    height: 120px;
+    perspective: 1000px; /* Perspective for the 3D effect */
+  }
+  
+  .top, .down {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    font-size: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    backface-visibility: hidden; /* Hides the back face of the flipped element */
+  }
+  
+  .top {
+    background-color: var(--Very-dark-blue);
+    top: 0;
+    transform-origin: bottom;
+    z-index: 2;
+  }
+  
+  .down {
+    bottom: 0;
+    transform-origin: top;
+    background-color: var(--Dark-desaturated-blue);
+  }
+  
+  .flip-top {
+    animation: flipTop 0.6s forwards;
+  }
+  
+  .flip-down {
+    animation: flipDown 0.6s forwards;
+  }
+  
+  @keyframes flipTop {
+    0% { transform: rotateX(0deg); }
+    100% { transform: rotateX(-180deg); }
+  }
+  
+  @keyframes flipDown {
+    0% { transform: rotateX(180deg); }
+    100% { transform: rotateX(0deg); }
+  }
+
+
+
+.left-dot,
+.right-dot {
+    width: 15px;
+    height: 15px;
+    background-color: var(--Very-dark-black-blue);
+    border-radius: 50%;
+    position: absolute;
+    z-index: 100;
+}
+
+.left-dot {
+    left: -7px;
+    top: 50px;
+}
+
+.right-dot {
+    right:  -7px;
+    top: 50px;
+}
+
+.box {
+    position: absolute;
+    top: 10%;
+    font-size: 70px;
+    font-weight: 900;
+    color: var(--Soft-red);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+span {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--Grayish-blue);
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-image: url(/images/pattern-hills.svg );
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    height: 30vh;
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    
+}
+
+.socials ion-icon {
+    cursor: pointer;
+    font-size: 30px;
+    transition: all .3s ease-in-out;
+    color: var(--Grayish-blue);
+}
+
+.socials ion-icon:hover {
+    color: var(--Soft-red);
+}
+
+/* .pattern {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+} */
+
+@keyframes flip-top {
+    to {
+      transform: rotateX(90deg);
+    }
+  }
+  
+  @keyframes flip-bottom {
+    to {
+      transform: rotateX(0deg);
+    }
+  }
+
+@media screen and (max-width: 600px) {
+
+     .header h1 {
+        font-size: 16px;
+        width: 80%;
+        text-align: center;        
+     }
+
+     .counter {
+        gap: 5px;
+        margin: 0px 30px;
+     }
+
+     .number {
+        width: 80px;
+     }
+
+     .box {
+        font-size: 40px;
+        top: 25px;
+        top: 25%;
+     }
+
+     span {
+        font-size: 8px;
+     }
+
+     .pattern {
+        height: 20vh;
+
+     }
+
+}
